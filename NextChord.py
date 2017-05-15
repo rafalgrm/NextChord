@@ -10,7 +10,7 @@ from wtforms.validators import Required
 
 class ExampleForm(Form):
     model = TextField('Model Field', description='zamienic na dropdown z wyborem gotowego wytrenowanego modelu z melody rnn')
-    workspace = TextField('Workspace Field', description='wybór workspace',
+    workspace = TextField('Workspace Field', description='wybor workspace',
                        validators=[Required()])
     checkbox_field = BooleanField('jakies kontorlki od podstaowwej konfiguracji',
                                   description='Checkbox description')
