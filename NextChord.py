@@ -1,15 +1,18 @@
 from flask import Flask, render_template, flash
 from flask_bootstrap import Bootstrap
 from flask_appconfig import AppConfig
-from flask_wtf import Form, RecaptchaField
-from flask_wtf.file import FileField
-from wtforms import TextField, HiddenField, ValidationError, RadioField,\
-    BooleanField, SubmitField, IntegerField, FormField, validators
+from flask_wtf import Form
+from flask.ext.wtf import Form
+from wtforms import TextField, ValidationError, BooleanField,\
+	SubmitField, SelectField, FormField, validators
 from wtforms.validators import Required
 
+available_models = ['model1', 'model2'] 
 
 class ExampleForm(Form):
-    model = TextField('Model Field', description='zamienic na dropdown z wyborem gotowego wytrenowanego modelu z melody rnn')
+    model = SelectField(u"Model Field", choices=[(m, m) for m in available_models],
+    	description='dropdown z wyborem gotowego wytrenowanego modelu z melody rnn')
+
     workspace = TextField('Workspace Field', description='wybor workspace',
                        validators=[Required()])
     checkbox_field = BooleanField('jakies kontorlki od podstaowwej konfiguracji',
